@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello World</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<h1>console.log(typeof typeof 1) :</h1>
+<div id="typeofOftypeof"></div>
+
+<h1>Last letter in upper case :</h1>
+<div id="lastLetterUpperCase"></div>
+
+<h1>Display "JS" from "JavaScript" :</h1>
+<div id="JSfromJavascript"></div>
+
+<script type="text/javascript">
+    // Un premier commentaire en JavaScript.
+    /*
+       Un second commentaire
+       en Javascript.
+    */
+
+    console.log('Hello World');
+
+    var typeofOftypeof = document.getElementById('typeofOftypeof');
+    typeofOftypeof.innerHTML = typeof typeof 1;
+
+    var msg = 'JavaScript';
+    var lastLetterUpperCase=document.getElementById('lastLetterUpperCase');
+    lastLetterUpperCase.append(msg[(msg.length-1)].toUpperCase());
+
+    var JSfromJavascript = document.getElementById('JSfromJavascript');
+    JSfromJavascript.innerHTML = msg.substring(msg.indexOf('J'), msg.indexOf('J')+1) + msg.substring(msg.indexOf('S'), msg.indexOf('S') +1);
+
+    /*let tableau = ['mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+    tableau.unshift('lundi');
+    tableau.push('dimanche');
+    console.log(tableau);
+
+    let t = ['lundi', ...tableau, 'dimanche'];
+
+    let tab = tableau.map(function (valeur) {
+        return valeur.length;
+    });
+
+    let tab = [8, 15, 12, 5, 2, 18];
+
+    var somme = tab.reduce(function(accumulateur, element) {
+        return accumulateur + element;
+    });
+
+    console.log(somme/tab.length);
+
+    let tableau = [["a", 8], ["b", 15], ["c", 12], ["d", 5], ["e", 2], ["f", 18]];
+
+     var somme = tableau.reduce(function (a, e) {
+        return a + e[1];
+    }, 0);
+
+    console.log(somme);*/
+
+    var listeCourse = [];
+
+    function addItemsListeCourse(nom, qte) {
+        listeCourse.push([nom, qte]);
+    }
+
+    function afficheListeCourse() {
+        return listeCourse.map(function (valeur) {
+            console.log(listeCourse.join('|'));
+        })
+    }
+
+    addItemsListeCourse('Pates', 1);
+    addItemsListeCourse('Saucissons', 3);
+
+    (function() {
+        addItemsListeCourse('Balai', 1);
+        addItemsListeCourse('Dentifrices', 2);
+        addItemsListeCourse('Camemberts', 3);
+    })();
+
+    afficheListeCourse();
+
+    console.log('---------------');
+
+    function changeQuantite(index, newQte) {
+        listeCourse[index][1] = newQte;
+    }
+    changeQuantite(4, 1);
+
+    afficheListeCourse();
+
+    function deleteFromListe(index) {
+        listeCourse.splice(index, 1);
+    }
+
+    deleteFromListe(2);
+
+    console.log('---------------');
+
+    afficheListeCourse();
+
+    var somme = listeCourse.reduce(function (a, e) {
+        return a + e[1];
+    }, 0);
+</script>
+</body>
+</html>
