@@ -6,14 +6,29 @@
     <meta charset="UTF-8">
 </head>
 <body>
-
+<div id="log"></div>
 <script type="text/javascript">
     // Un premier commentaire en JavaScript.
     /*
        Un second commentaire
        en Javascript.
     */
-    console.log('Hello World');
+    var log = document.querySelector('#log');
+
+    ['log','warn','error'].forEach(function (verb) {
+        console[verb] = (function (method, verb, log) {
+            return function (text) {
+                method(text);
+                // handle distinguishing between methods any way you'd like
+                var msg = document.createElement('code');
+                msg.classList.add(verb);
+                msg.innerHTML =  text + "</br>";
+                log.appendChild(msg);
+            };
+        })(console[verb].bind(console), verb, log);
+    });
+
+    console.log("Hello World");
 
     var t = [['courgettes', 8], ['carottes', 15], ['tomates', 12], ['potirons', 5]];
 

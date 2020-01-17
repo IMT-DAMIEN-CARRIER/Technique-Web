@@ -19,3 +19,35 @@ div {
     font-size: 80%;
     margin-left: 4%;
 }
+
+#log {
+    position: fixed;
+    left: 80%;
+    font-size: 100%;
+    padding: 1%;
+    border-color: white;
+    border-style: groove;
+    border-width: 1px;
+}
+
+.warn {
+    color: yellow;
+    font-weight: bold;
+}
+
+.warn:before {
+    content: "• ";
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+.error:before {
+    content: "~ ";
+}
+
+.log:before {
+    content:"> ";
+}
