@@ -13,12 +13,12 @@
        Un second commentaire
        en Javascript.
     */
-    console.log("Hello World");
+    console.log('Hello World');
 
-    var t = [["courgettes", 8], ["carottes", 15], ["tomates", 12], ["potirons", 5]];
+    var t = [['courgettes', 8], ['carottes', 15], ['tomates', 12], ['potirons', 5]];
 
     function addTitle(title){
-        var element = document.body.appendChild(document.createElement("h1"));
+        var element = document.body.appendChild(document.createElement('h1'));
         element.innerText = title;
     }
 
@@ -33,7 +33,7 @@
         });
 
         tableau.map(function (item) {
-            element.innerHTML = element.innerHTML + "</br> ֎ " + item[0] + " : " + item[1] + " unité(s)"
+            element.innerHTML = element.innerHTML + '</br> ֎ ' + item[0] + ' : ' + item[1] + ' unité(s)'
         });
     }
 
@@ -44,37 +44,62 @@
         tableau[tab2.indexOf(elt)][1] = qt;
     }
 
-    addTitle("Tableau initial");
-    var element = document.body.appendChild(document.createElement("div"));
+    addTitle('Tableau initial');
+    var element = document.body.appendChild(document.createElement('div'));
     display(t);
 
-    addTitle("Ajout de 44 haricots dans la liste");
-    addElement(t, "haricots", 44);
-    element = document.body.appendChild(document.createElement("div"));
+    addTitle('Ajout de 44 haricots dans la liste');
+    addElement(t, 'haricots', 44);
+    element = document.body.appendChild(document.createElement('div'));
     display(t);
 
-    addTitle("Ajout d'éléments avec une fonction auto-exécutée");
-    element = document.body.appendChild(document.createElement("div"));
+    addTitle('Ajout d\'éléments avec une fonction auto-exécutée');
+    element = document.body.appendChild(document.createElement('div'));
     function autoex(elt, qt) {
         (function() {
             addElement(t, elt, qt);
         }) (elt, qt);
     }
-    autoex("balai", 1);
-    autoex("dentifrice", 2);
-    autoex("camembert", 3);
+    autoex('balai', 1);
+    autoex('dentifrice', 2);
+    autoex('camembert', 3);
     display(t);
 
-    addTitle("Ajout d'un balai dans la liste (changement de sa quantité à 2)");
-    element = document.body.appendChild(document.createElement("div"));
-    changeQuantity(t, "balai", 2);
+    addTitle('Ajout d\'un balai dans la liste (changement de sa quantité à 2)');
+    element = document.body.appendChild(document.createElement('div'));
+    changeQuantity(t, 'balai', 2);
     display(t);
 
-    addTitle("Passage de la quantité des carottes à 0 (et donc pas d'affichage de l'élément");
-    element = document.body.appendChild(document.createElement("div"));
-    changeQuantity(t, "carottes", 0);
+    addTitle('Passage de la quantité des carottes à 0 (et donc pas d\'affichage de l\'élément');
+    element = document.body.appendChild(document.createElement('div'));
+    changeQuantity(t, 'carottes', 0);
     display(t);
 
+    addTitle('Opérateur ternaire.');
+    element = document.body.appendChild(document.createElement('div'));
+
+    let majorite = (age) => (age > 18 ? element.innerHTML = 'Majeur' : element.innerHTML = 'Mineur');
+    majorite(19);
+
+    element = document.body.appendChild(document.createElement('div'));
+    majorite(15);
+
+    addTitle('Point de vie');
+    element = document.body.appendChild(document.createElement('div'));
+    var pv = 10;
+
+    var degat = function ()
+    {
+        pv--;
+    };
+
+    var esquive = false;
+
+    esquive || degat();
+    element.innerHTML = pv;
+
+    addTitle('Ouagadougou');
+    element = document.body.appendChild(document.createElement('div'));
 </script>
 </body>
 </html>
