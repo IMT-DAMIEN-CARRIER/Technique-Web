@@ -100,6 +100,20 @@
 
     addTitle('Ouagadougou');
     element = document.body.appendChild(document.createElement('div'));
+    var string = 'ouagadougou';
+
+    let i = 0;
+    var count = 0;
+
+    while (i < string.length) {
+        if ('o' === string[i] && 'u' === string[i + 1]) {
+            count++;
+        }
+
+        i++;
+    }
+
+    element.innerHTML = count;
 </script>
 </body>
 </html>
