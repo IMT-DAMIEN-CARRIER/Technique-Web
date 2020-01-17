@@ -26,8 +26,6 @@ class Graph{
 
         digraph += '}';
 
-        console.log(digraph);
-
         viz.renderSVGElement(digraph)
             .then(function(element) {
                 document.body.appendChild(element);
