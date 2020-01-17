@@ -7,106 +7,74 @@
 </head>
 <body>
 
-<h1>console.log(typeof typeof 1) :</h1>
-<div id="typeofOftypeof"></div>
-
-<h1>Last letter in upper case :</h1>
-<div id="lastLetterUpperCase"></div>
-
-<h1>Display "JS" from "JavaScript" :</h1>
-<div id="JSfromJavascript"></div>
-
 <script type="text/javascript">
     // Un premier commentaire en JavaScript.
     /*
        Un second commentaire
        en Javascript.
     */
+    console.log("Hello World");
 
-    console.log('Hello World');
+    var t = [["courgettes", 8], ["carottes", 15], ["tomates", 12], ["potirons", 5]];
 
-    var typeofOftypeof = document.getElementById('typeofOftypeof');
-    typeofOftypeof.innerHTML = typeof typeof 1;
-
-    var msg = 'JavaScript';
-    var lastLetterUpperCase=document.getElementById('lastLetterUpperCase');
-    lastLetterUpperCase.append(msg[(msg.length-1)].toUpperCase());
-
-    var JSfromJavascript = document.getElementById('JSfromJavascript');
-    JSfromJavascript.innerHTML = msg.substring(msg.indexOf('J'), msg.indexOf('J')+1) + msg.substring(msg.indexOf('S'), msg.indexOf('S') +1);
-
-    /*let tableau = ['mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
-    tableau.unshift('lundi');
-    tableau.push('dimanche');
-    console.log(tableau);
-
-    let t = ['lundi', ...tableau, 'dimanche'];
-
-    let tab = tableau.map(function (valeur) {
-        return valeur.length;
-    });
-
-    let tab = [8, 15, 12, 5, 2, 18];
-
-    var somme = tab.reduce(function(accumulateur, element) {
-        return accumulateur + element;
-    });
-
-    console.log(somme/tab.length);
-
-    let tableau = [["a", 8], ["b", 15], ["c", 12], ["d", 5], ["e", 2], ["f", 18]];
-
-     var somme = tableau.reduce(function (a, e) {
-        return a + e[1];
-    }, 0);
-
-    console.log(somme);*/
-
-    var listeCourse = [];
-
-    function addItemsListeCourse(nom, qte) {
-        listeCourse.push([nom, qte]);
+    function addTitle(title){
+        var element = document.body.appendChild(document.createElement("h1"));
+        element.innerText = title;
     }
 
-    function afficheListeCourse() {
-        return listeCourse.map(function (valeur) {
-            console.log(listeCourse.join('|'));
-        })
+    function addElement(tableau, elt, quantity) {
+        tableau.push([elt, quantity]);
     }
 
-    addItemsListeCourse('Pates', 1);
-    addItemsListeCourse('Saucissons', 3);
+    function display(tableau) {
+        //pour ne pas afficher les éléments à quantity = 0
+        tableau = tableau.filter(function (item) {
+            return item[1] > 0;
+        });
 
-    (function() {
-        addItemsListeCourse('Balai', 1);
-        addItemsListeCourse('Dentifrices', 2);
-        addItemsListeCourse('Camemberts', 3);
-    })();
-
-    afficheListeCourse();
-
-    console.log('---------------');
-
-    function changeQuantite(index, newQte) {
-        listeCourse[index][1] = newQte;
-    }
-    changeQuantite(4, 1);
-
-    afficheListeCourse();
-
-    function deleteFromListe(index) {
-        listeCourse.splice(index, 1);
+        tableau.map(function (item) {
+            element.innerHTML = element.innerHTML + "</br> ֎ " + item[0] + " : " + item[1] + " unité(s)"
+        });
     }
 
-    deleteFromListe(2);
+    function changeQuantity(tableau, elt, qt) {
+        var tab2 = tableau.map(function (item) {
+            return item[0];
+        });
+        tableau[tab2.indexOf(elt)][1] = qt;
+    }
 
-    console.log('---------------');
+    addTitle("Tableau initial");
+    var element = document.body.appendChild(document.createElement("div"));
+    display(t);
 
-    afficheListeCourse();
+    addTitle("Ajout de 44 haricots dans la liste");
+    addElement(t, "haricots", 44);
+    element = document.body.appendChild(document.createElement("div"));
+    display(t);
 
-    var somme = listeCourse.reduce(function (a, e) {
-        return a + e[1];
-    }, 0);
+    addTitle("Ajout d'éléments avec une fonction auto-exécutée");
+    element = document.body.appendChild(document.createElement("div"));
+    function autoex(elt, qt) {
+        (function() {
+            addElement(t, elt, qt);
+        }) (elt, qt);
+    }
+    autoex("balai", 1);
+    autoex("dentifrice", 2);
+    autoex("camembert", 3);
+    display(t);
+
+    addTitle("Ajout d'un balai dans la liste (changement de sa quantité à 2)");
+    element = document.body.appendChild(document.createElement("div"));
+    changeQuantity(t, "balai", 2);
+    display(t);
+
+    addTitle("Passage de la quantité des carottes à 0 (et donc pas d'affichage de l'élément");
+    element = document.body.appendChild(document.createElement("div"));
+    changeQuantity(t, "carottes", 0);
+    display(t);
+
 </script>
 </body>
 </html>
