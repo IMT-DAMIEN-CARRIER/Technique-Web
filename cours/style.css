@@ -28,6 +28,7 @@ div {
     border-color: white;
     border-style: groove;
     border-width: 1px;
+    color: green;
 }
 
 .warn {

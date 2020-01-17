@@ -90,14 +90,10 @@
     changeQuantity(t, 'carottes', 0);
     display(t);
 
-    addTitle('Opérateur ternaire.');
-    element = document.body.appendChild(document.createElement('div'));
-
     let majorite = (age) => (age > 18 ? element.innerHTML = 'Majeur' : element.innerHTML = 'Mineur');
-    majorite(19);
+    console.log(majorite(19));
 
-    element = document.body.appendChild(document.createElement('div'));
-    majorite(15);
+    console.warn(majorite(15));
 
     addTitle('Point de vie');
     element = document.body.appendChild(document.createElement('div'));
