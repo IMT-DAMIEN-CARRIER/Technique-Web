@@ -18,7 +18,7 @@ class Graph{
                     digraph += i + ' -> ' + j + ' [dir="both"] ';
                 }
 
-                if (1 === this.matrix[i][j] && 1 !== this.matrix[j][i]) {
+                if (1 === this.matrix[i][j] && 0 === this.matrix[j][i]) {
                     digraph += i + ' -> ' + j + ' ';
                 }
             }
