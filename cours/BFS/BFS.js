@@ -4,18 +4,38 @@ class Graph{
     }
 
     distance(root){
-        var q = [root];
+        let distances = [];
+
+        for (let i = 0; i < this.matrix.length; i++) {
+            if (i === root) {
+                distances.push(0);
+            } else {
+                distances.push(-1);
+            }
+        }
+
+        let q = [root];
 
         while (q.length > 0) {
-            var node = q.shift();
+            let node = q.shift();
 
-            for (let i = 0; i < this.matrix.length; i++) {
-                if (false === q.includes(i,0) && 1 === this.matrix[root][i]) {
-                    q.push(i);
-                    console.log(q);
+            let adjacencyNodes = [];
+
+            for(let i = 0; i < this.matrix.length; i++) {
+                if (1 === this.matrix[node][i]) {
+                    adjacencyNodes.push(i);
+                }
+            }
+
+            for (let i =0; i < adjacencyNodes.length; i++) {
+                if (-1 === distances[adjacencyNodes[i]]) {
+                    distances[adjacencyNodes[i]] = distances[node] + 1;
+                    q.push(adjacencyNodes[i]);
                 }
             }
         }
+
+        console.log(distances);
     }
 
     display(){
