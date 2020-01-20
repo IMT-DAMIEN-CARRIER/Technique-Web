@@ -4,6 +4,18 @@ class Graph{
     }
 
     distance(root){
+        var q = [root];
+
+        while (q.length > 0) {
+            var node = q.shift();
+
+            for (let i = 0; i < this.matrix.length; i++) {
+                if (false === q.includes(i,0) && 1 === this.matrix[root][i]) {
+                    q.push(i);
+                    console.log(q);
+                }
+            }
+        }
     }
 
     display(){

@@ -9,6 +9,11 @@
 <script src="full.render.js"></script>
 <script src="BFS.js"></script>
 <script type="text/javascript">
+    function addTitle(title){
+        var element = document.body.appendChild(document.createElement('h1'));
+        element.innerText = title;
+    }
+
     var matrix = [
         [0, 1, 1, 1, 0],
         [0, 0, 1, 0, 0],
@@ -19,6 +24,9 @@
 
     var bfs = new Graph(matrix);
     bfs.display();
+
+    addTitle('Distance');
+    //bfs.distance(0);
 </script>
 </body>
 </html>
