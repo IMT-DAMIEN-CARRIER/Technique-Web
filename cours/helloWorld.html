@@ -6,7 +6,13 @@
     <meta charset="UTF-8">
 </head>
 <body>
-<div id="log"></div>
+<div id="console">
+    <div style="margin: auto; text-align:center">Console</div>
+    <div id="log">
+    </div>
+    <input type="text" id="consoleinput">
+
+</div>
 <script type="text/javascript">
     // Un premier commentaire en JavaScript.
     /*
@@ -15,6 +21,7 @@
     */
     var log = document.querySelector('#log');
 
+    //from internet/////////
     ['log','warn','error'].forEach(function (verb) {
         console[verb] = (function (method, verb, log) {
             return function (text) {
@@ -26,6 +33,24 @@
                 log.appendChild(msg);
             };
         })(console[verb].bind(console), verb, log);
+    });
+    ////////////////////////
+
+    document.querySelector('#consoleinput').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            while(document.getElementById("log").childElementCount > 17) {
+                document.getElementById("log").removeChild(document.getElementById("log").firstChild);
+            }
+            try {
+                console.warn(document.getElementById("consoleinput").value);
+                eval(document.getElementById("consoleinput").value);
+            } catch (e) {
+                var msg = document.createElement('code');
+                msg.classList.add("error");
+                msg.innerHTML = e.message + "</br>";
+                log.appendChild(msg);
+            }
+        }
     });
 
     console.log("Hello World");

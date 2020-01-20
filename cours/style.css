@@ -20,35 +20,48 @@ div {
     margin-left: 4%;
 }
 
-#log {
+#console {
     position: fixed;
-    left: 80%;
-    font-size: 100%;
+    right: 10%;
+    font-size: 130%;
     padding: 1%;
     border-color: white;
     border-style: groove;
     border-width: 1px;
-    color: green;
+    width:20%;
+    height: 50%;
+}
+
+#consoleinput {
+    margin-top: 10%;
+    width:90%;
+    position: absolute;
+    bottom: 1%;
 }
 
 .warn {
     color: yellow;
     font-weight: bold;
+    margin-top: 5px;
+    border-top-style: dashed;
+    border-top-width: 0.5px;
+    border-top-color: white;
+    display: block;
+
 }
 
 .warn:before {
     content: "• ";
 }
 
+.log:before {
+    content:'> ';
+}
+
 .error {
     color: red;
-    font-weight: bold;
 }
 
 .error:before {
-    content: "~ ";
-}
-
-.log:before {
-    content:"> ";
+    content:"ₓ ";
 }
