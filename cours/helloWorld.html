@@ -125,6 +125,23 @@
     }
 
     element.innerHTML = count;
+
+
+    addTitle('C\'est carré');
+    element = document.body.appendChild(document.createElement('canvas'));
+    element.setAttribute('id', 'mycanvas');
+
+    var canvas = document.getElementById("mycanvas");
+    var context = canvas.getContext("2d");
+    context.strokeStyle = "green";
+
+    context.beginPath();
+    context.moveTo(0, 0);
+    context.lineTo(100, 0);
+    context.lineTo(100, 100);
+    context.lineTo(0, 100);
+    context.closePath();
+    context.stroke();
 </script>
 </body>
 </html>
